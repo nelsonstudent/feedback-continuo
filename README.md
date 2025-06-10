@@ -77,26 +77,6 @@ feedback-continuo/
 ├── README.md
 └── LICENSE
 
-
----
-
-## ✅ Validação do MVP
-
-O MVP será testado com uma turma de 5 alunos por 2 semanas.
-
-**Critérios de sucesso:**
-- ✅ Mais de 60% dos alunos utilizando a ferramenta
-- ✅ Redução nas dúvidas recorrentes (via questionário pós-uso)
-- ✅ Feedbacks com dados úteis para ajustes nas aulas
-
----
-
-## 🚀 Próximos Passos
-
-- 🔔 Enviar alertas para professores (Telegram, e-mail)
-- 🔗 Integração com Google Classroom ou Moodle (via API)
-- 🤖 Classificação automática de feedback com NLP (Machine Learning)
-
 ---
 
 
