@@ -6,7 +6,7 @@ Uma solução simples e funcional para **avaliação e feedback contínuo no amb
 
 ## 🎯 Objetivo
 
-Criar um MVP funcional para resolver a dificuldade em medir o desempenho de alunos e professores em tempo real, usando **técnicas de engenharia de software** e ferramentas de **analytics educacional**.
+Criar um MVP funcional para resolver a dificuldade em medir o desempenho de alunos e professores, usando **técnicas de engenharia de software** e ferramentas de **analytics educacional**.
 
 ---
 
@@ -82,7 +82,7 @@ feedback-continuo/
 
 ## ✅ Validação do MVP
 
-O MVP será testado com uma turma de 20 alunos por 2 semanas.
+O MVP será testado com uma turma de 5 alunos por 2 semanas.
 
 **Critérios de sucesso:**
 - ✅ Mais de 60% dos alunos utilizando a ferramenta
