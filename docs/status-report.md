@@ -1,7 +1,7 @@
 # *STATUS REPORT INICIAL & PRÓXIMOS PASSOS*  
 *Projeto:* Plataforma de Feedback e Analytics Pedagógico  
-*Equipe:* [Nomes dos integrantes]  
-*Data:* [Data atual]  
+*Equipe:* [Alef Joaquim, Céu Ferreira, Nelson Pires, Thomas Lesselis e Vinicius de Assis]  
+*Data:* [10/06/2025]  
 
 ---
 
