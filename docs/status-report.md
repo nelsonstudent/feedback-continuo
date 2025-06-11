@@ -37,7 +37,3 @@ Desenvolver uma plataforma educacional para apoiar o processo de ensino-aprendiz
 | Realizar testes com usuários simulados        | [Nome]          | [Data]             |  
 
 ---
-
-### *Observações Adicionais:*  
-- *Riscos Identificados:* [Descreva brevemente, se aplicável].  
-- *Dependências Externas:* [Ex.: Integração com API de terceiros].
