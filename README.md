@@ -31,17 +31,19 @@ Criar um MVP funcional para resolver a dificuldade em medir o desempenho de alun
 
 ### Backend
 - **Linguagem:** Python
-- **Framework:** [FastAPI](https://fastapi.tiangolo.com/)
-- **Banco de Dados:** SQLite via SQLAlchemy
-- **Análise de Texto:** [NLTK](https://www.nltk.org/) (em desenvolvimento para MVP)
+- **Framework:** [Flask](https://flask.palletsprojects.com/)
+- **Banco de Dados:** SQLite via [SQLAlchemy](https://www.sqlalchemy.org/)
+- **Manipulação de Dados:** [Pandas](https://pandas.pydata.org/)
+- **Análise de Texto:** (futuro) Ferramentas Python (ex: NLTK, spaCy) – *não prioritário para o MVP*
 
 ### Frontend
-- HTML + CSS + JS com [Bootstrap](https://getbootstrap.com/)
-- Alternativa: [Vue.js](https://vuejs.org/) para dashboards interativos
+- **Framework:** [Streamlit](https://streamlit.io/) (dashboard e interação para alunos e professores)
+- Alternativa futura: HTML + CSS + JS com [Bootstrap](https://getbootstrap.com/) para páginas administrativas simples
 
 ### Deploy
-- [Vercel](https://vercel.com/) ou GitHub Pages (frontend)
-- [Render](https://render.com/) ou [Railway](https://railway.app/) (backend gratuito)
+- [Render](https://render.com/) ou [Railway](https://railway.app/) (backend Flask)
+- [Streamlit Community Cloud](https://streamlit.io/cloud) (frontend)  
+  > *Obs: O Streamlit pode ser executado localmente ou hospedado separadamente, conforme necessidade do MVP.*
 
 ---
 
@@ -55,27 +57,37 @@ Criar um MVP funcional para resolver a dificuldade em medir o desempenho de alun
 4. Envia o feedback
 
 ### Professor
-1. Acessa seu dashboard com login
+1. Acessa seu dashboard (via Streamlit) com login
 2. Visualiza:
    - Satisfação média da aula
    - Comentários mais recorrentes
    - Sugestões de revisão
-3. Exporta relatórios em CSV
+3. Exporta relatórios em CSV ou Excel
 
 ---
 
 ## 📁 Estrutura do Projeto
 
+```
 feedback-continuo/
-├── backend/
-│ ├── main.py # API FastAPI
-│ ├── models.py # ORM com SQLAlchemy
-│ ├── database.py # Conexão com SQLite
-│ └── requirements.txt # Dependências Python
-├── frontend/
-│ └── index.html # Interface básica do aluno
+├── app/
+│   ├── __init__.py         # Inicialização do Flask
+│   ├── config.py           # Configurações
+│   ├── models/             # ORM com SQLAlchemy
+│   ├── repositories/       # Padrão Repository
+│   ├── services/           # Lógica de negócio
+│   ├── api/                # Rotas Flask (Controllers)
+│   ├── templates/          # (Opcional) HTML para admin ou forms
+│   └── static/             # Arquivos estáticos (uploads, css, imgs)
+├── streamlit_app/
+│   ├── main.py             # Dashboard principal (Streamlit)
+│   └── pages/              # Páginas adicionais para alunos/professores
+├── tests/                  # Testes automatizados
+├── docs/                   # Documentação e diagramas
+├── requirements.txt        # Dependências Python
 ├── README.md
 └── LICENSE
+```
 
 ---
 
