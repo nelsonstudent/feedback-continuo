@@ -1,4 +1,4 @@
-# ADR-003: Decisão sobre o Padrão de Projeto
+# ADR-002: Decisão sobre o Padrão de Projeto
 
 ## Contexto
 
