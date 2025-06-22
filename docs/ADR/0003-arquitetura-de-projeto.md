@@ -1,4 +1,4 @@
-# ADR-004: Decisão sobre a Arquitetura do Projeto
+# ADR-003: Decisão sobre a Arquitetura do Projeto
 
 ## Contexto
 
