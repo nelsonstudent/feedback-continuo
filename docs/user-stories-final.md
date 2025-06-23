@@ -1,4 +1,4 @@
-# *Lista de requisitos* (User Stories)  
+# *User Stories*
  
 ## User Stories para Alunos 
 - Como aluno, quero enviar feedback (emoji + comentário opcional) 
