@@ -1,4 +1,4 @@
-# ADR-004: Decisão sobre a Arquitetura do Projeto
+# ADR-003: Decisão sobre o Padrão de Projeto
 
 ## Contexto
 
@@ -34,4 +34,4 @@ A estrutura do projeto seguirá a separação clara entre backend (Flask), front
 
 ---
 
-*ADR elaborada em 20/06/2025 para registrar a decisão arquitetural do projeto.*
+ADR elaborada em 20/06/2025 para orientar decisões de design do projeto.

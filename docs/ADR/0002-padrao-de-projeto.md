@@ -1,4 +1,4 @@
-# ADR-003: Decisão sobre o Padrão de Projeto
+# ADR-002: Decisão sobre o Padrão de Projeto
 
 ## Contexto
 
@@ -35,3 +35,4 @@ Esses padrões serão aplicados de forma pragmática, adaptando-se à simplicida
 ---
 
 *ADR elaborada em 20/06/2025 para orientar decisões de design do projeto.*
+
