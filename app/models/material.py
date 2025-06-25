@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
 from app.database import Base
 from sqlalchemy.orm import relationship
+from app.models.aula_material import aula_material
 
 class Material(Base):
     __tablename__ = "materiais"
@@ -14,4 +15,4 @@ class Material(Base):
 
     autor = relationship("Professor", back_populates="materiais")
     visualizacoes = relationship("MaterialVisualizado", back_populates="material")
-    aulas = relationship("Aula", secondary="aula_material", back_populates="materiais")
+    aulas = relationship("Aula", secondary=aula_material, back_populates="materiais")
