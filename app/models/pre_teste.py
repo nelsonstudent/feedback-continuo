@@ -1,8 +1,9 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from app.database import Base
+from app.models.base import BaseModel
 from sqlalchemy.orm import relationship
 
-class PreTeste(Base):
+class PreTeste(Base, BaseModel):
     __tablename__ = "pre_testes"
 
     id = Column(Integer, primary_key=True, autoincrement=True)

@@ -1,8 +1,9 @@
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
 from app.database import Base
+from app.models.base import BaseModel
 from sqlalchemy.orm import relationship
 
-class MaterialVisualizado(Base):
+class MaterialVisualizado(Base, BaseModel):
     __tablename__ = "materiais_visualizados"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
