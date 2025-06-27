@@ -1,45 +1,43 @@
 from flask import Blueprint, request, jsonify
-from app.database import SessionLocal
-from app.models.avaliacao import Avaliacao
+from app.services.avaliacao_service import (
+    listar_avaliacoes_service,
+    buscar_avaliacao_por_id_service,
+    criar_avaliacao_service,
+    atualizar_avaliacao_service,
+    deletar_avaliacao_service
+)
 
 avaliacao_bp = Blueprint('avaliacao', __name__, url_prefix='/avaliacoes')
 
 @avaliacao_bp.route('/', methods=['GET'])
 def listar_avaliacoes():
-    session = SessionLocal()
-    avaliacoes = session.query(Avaliacao).all()
-    resultado = [
-        {
-            "id": a.id,
-            "tipo": a.tipo,
-            "nota_escala": a.nota_escala,
-            "comentarios": a.comentarios,
-            "aula_id": a.aula_id,
-            "aluno_id": a.aluno_id
-        } for a in avaliacoes
-    ]
-    session.close()
-    return jsonify(resultado)
+    avaliacoes = listar_avaliacoes_service()
+    return jsonify(avaliacoes)
+
+@avaliacao_bp.route('/<int:avaliacao_id>', methods=['GET'])
+def buscar_avaliacao(avaliacao_id):
+    avaliacao = buscar_avaliacao_por_id_service(avaliacao_id)
+    if avaliacao:
+        return jsonify(avaliacao)
+    return jsonify({"erro": "avaliacao não encontrada"}), 404
 
 @avaliacao_bp.route('/', methods=['POST'])
 def criar_avaliacao():
     data = request.json
-    session = SessionLocal()
-    avaliacao = Avaliacao(
-        tipo=data['tipo'],
-        nota_escala=data.get('nota_escala'),
-        comentarios=data.get('comentarios'),
-        aula_id=data['aula_id'],
-        aluno_id=data['aluno_id']
-    )
-    session.add(avaliacao)
-    session.commit()
-    session.close()
-    return jsonify({
-        "id": avaliacao.id,
-        "tipo": avaliacao.tipo,
-        "nota_escala": avaliacao.nota_escala,
-        "comentarios": avaliacao.comentarios,
-        "aula_id": avaliacao.aula_id,
-        "aluno_id": avaliacao.aluno_id
-    }), 201
+    nova_avaliacao = criar_avaliacao_service(data)
+    return jsonify(nova_avaliacao), 201
+
+@avaliacao_bp.route('/<int:avaliacao_id>', methods=['PUT'])
+def atualizar_avaliacao(avaliacao_id):
+    data = request.json
+    avaliacao_atualizada = atualizar_avaliacao_service(avaliacao_id, data)
+    if avaliacao_atualizada:
+        return jsonify(avaliacao_atualizada)
+    return jsonify({"erro": "avaliacao não encontrada"}), 404
+
+@avaliacao_bp.route('/<int:avaliacao_id>', methods=['DELETE'])
+def deletar_avaliacao(avaliacao_id):
+    sucesso = deletar_avaliacao_service(avaliacao_id)
+    if sucesso:
+        return jsonify({"mensagem": "avaliacao deletada com sucesso"})
+    return jsonify({"erro": "avaliacao não encontrada"}), 404

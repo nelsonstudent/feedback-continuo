@@ -1,42 +1,43 @@
 from flask import Blueprint, request, jsonify
-from app.database import SessionLocal
-from app.models.pre_teste import PreTeste
+from app.services.pre_teste_service import (
+    listar_pre_testes_service,
+    buscar_pre_teste_por_id_service,
+    criar_pre_teste_service,
+    atualizar_pre_teste_service,
+    deletar_pre_teste_service
+)
 
 pre_teste_bp = Blueprint('pre_teste', __name__, url_prefix='/pre_testes')
 
 @pre_teste_bp.route('/', methods=['GET'])
 def listar_pre_testes():
-    session = SessionLocal()
-    pre_testes = session.query(PreTeste).all()
-    resultado = [
-        {
-            "id": p.id,
-            "pergunta": p.pergunta,
-            "opcoes": p.opcoes,
-            "aula_id": p.aula_id,
-            "autor_id": p.autor_id
-        } for p in pre_testes
-    ]
-    session.close()
-    return jsonify(resultado)
+    pre_testes = listar_pre_testes_service()
+    return jsonify(pre_testes)
+
+@pre_teste_bp.route('/<int:pre_teste_id>', methods=['GET'])
+def buscar_pre_teste(pre_teste_id):
+    pre_teste = buscar_pre_teste_por_id_service(pre_teste_id)
+    if pre_teste:
+        return jsonify(pre_teste)
+    return jsonify({"erro": "Não encontrada"}), 404
 
 @pre_teste_bp.route('/', methods=['POST'])
 def criar_pre_teste():
     data = request.json
-    session = SessionLocal()
-    pre_teste = PreTeste(
-        pergunta=data['pergunta'],
-        opcoes=data.get('opcoes'),
-        aula_id=data['aula_id'],
-        autor_id=data['autor_id']
-    )
-    session.add(pre_teste)
-    session.commit()
-    session.close()
-    return jsonify({
-        "id": pre_teste.id,
-        "pergunta": pre_teste.pergunta,
-        "opcoes": pre_teste.opcoes,
-        "aula_id": pre_teste.aula_id,
-        "autor_id": pre_teste.autor_id
-    }), 201
+    nova_pre_teste = criar_pre_teste_service(data)
+    return jsonify(nova_pre_teste), 201
+
+@pre_teste_bp.route('/<int:pre_teste_id>', methods=['PUT'])
+def atualizar_pre_teste(pre_teste_id):
+    data = request.json
+    pre_teste_atualizada = atualizar_pre_teste_service(pre_teste_id, data)
+    if pre_teste_atualizada:
+        return jsonify(pre_teste_atualizada)
+    return jsonify({"erro": "Não encontrado"}), 404
+
+@pre_teste_bp.route('/<int:pre_teste_id>', methods=['DELETE'])
+def deletar_pre_teste(pre_teste_id):
+    sucesso = deletar_pre_teste_service(pre_teste_id)
+    if sucesso:
+        return jsonify({"mensagem": "Entidade deletada com sucesso"})
+    return jsonify({"erro": "Não encontrado"}), 404
