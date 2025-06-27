@@ -1,9 +1,10 @@
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
 from app.database import Base
+from app.models.base import BaseModel
 from sqlalchemy.orm import relationship
 from app.models.aula_material import aula_material
 
-class Aula(Base):
+class Aula(Base, BaseModel):
     __tablename__ = "aulas"
 
     id = Column(Integer, primary_key=True, autoincrement=True)

@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, Table
 from app.database import Base
+from app.models.base import BaseModel
 from sqlalchemy.orm import relationship
 
 aluno_grupo = Table(
@@ -8,7 +9,7 @@ aluno_grupo = Table(
     Column("grupo_aula_id", Integer, ForeignKey("grupos_aula.id"), primary_key=True)
 )
 
-class GrupoAula(Base):
+class GrupoAula(Base, BaseModel):
     __tablename__ = "grupos_aula"
 
     id = Column(Integer, primary_key=True, autoincrement=True)

@@ -1,8 +1,9 @@
 from sqlalchemy import Column, Integer, String, Float, ForeignKey
 from app.database import Base
+from app.models.base import BaseModel
 from sqlalchemy.orm import relationship
 
-class Relatorio(Base):
+class Relatorio(Base, BaseModel):
     __tablename__ = "relatorios"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
