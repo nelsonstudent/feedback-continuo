@@ -1,8 +1,6 @@
-from flask import Flask
-from app.routes import routes_bp
+from app import create_app
 
-app = Flask(__name__)
-app.register_blueprint(routes_bp)
+app = create_app()
 
 if __name__ == "__main__":
     app.run(debug=True)
