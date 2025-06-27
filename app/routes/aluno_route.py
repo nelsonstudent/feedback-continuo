@@ -1,23 +1,43 @@
 from flask import Blueprint, request, jsonify
-from app.database import SessionLocal
-from app.models.aluno import Aluno
+from app.services.aluno_service import (
+    listar_alunos_service,
+    buscar_aluno_por_id_service,
+    criar_aluno_service,
+    atualizar_aluno_service,
+    deletar_aluno_service
+)
 
 aluno_bp = Blueprint('aluno', __name__, url_prefix='/alunos')
 
 @aluno_bp.route('/', methods=['GET'])
 def listar_alunos():
-    session = SessionLocal()
-    alunos = session.query(Aluno).all()
-    resultado = [{"id": a.id, "nome": a.nome, "email": a.email, "turma": a.turma} for a in alunos]
-    session.close()
-    return jsonify(resultado)
+    alunos = listar_alunos_service()
+    return jsonify(alunos)
+
+@aluno_bp.route('/<int:aluno_id>', methods=['GET'])
+def buscar_aluno(aluno_id):
+    aluno = buscar_aluno_por_id_service(aluno_id)
+    if aluno:
+        return jsonify(aluno)
+    return jsonify({"erro": "aluno não encontrado"}), 404
 
 @aluno_bp.route('/', methods=['POST'])
 def criar_aluno():
     data = request.json
-    session = SessionLocal()
-    aluno = Aluno(nome=data['nome'], email=data['email'], turma=data['turma'])
-    session.add(aluno)
-    session.commit()
-    session.close()
-    return jsonify({"id": aluno.id, "nome": aluno.nome, "email": aluno.email, "turma": aluno.turma}), 201
+    nova_aluno = criar_aluno_service(data)
+    return jsonify(nova_aluno), 201
+
+@aluno_bp.route('/<int:aluno_id>', methods=['PUT'])
+def atualizar_aluno(aluno_id):
+    data = request.json
+    aluno_atualizada = atualizar_aluno_service(aluno_id, data)
+    if aluno_atualizada:
+        return jsonify(aluno_atualizada)
+    return jsonify({"erro": "aluno não encontrado"}), 404
+
+@aluno_bp.route('/<int:aluno_id>', methods=['DELETE'])
+def deletar_aluno(aluno_id):
+    sucesso = deletar_aluno_service(aluno_id)
+    if sucesso:
+        return jsonify({"mensagem": "aluno deletado com sucesso"})
+    return jsonify({"erro": "aluno não encontrada"}), 404

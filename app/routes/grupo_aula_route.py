@@ -1,36 +1,43 @@
 from flask import Blueprint, request, jsonify
-from app.database import SessionLocal
-from app.models.grupo_aula import GrupoAula
+from app.services.grupo_aula_service import (
+    listar_grupos_aula_service,
+    buscar_grupo_aula_por_id_service,
+    criar_grupo_aula_service,
+    atualizar_grupo_aula_service,
+    deletar_grupo_aula_service
+)
 
-grupo_aula_bp = Blueprint('grupo_aula', __name__, url_prefix='/grupos_aula')
+grupo_aula_bp = Blueprint('grupo_aula', __name__, url_prefix='/grupo_aula')
 
 @grupo_aula_bp.route('/', methods=['GET'])
-def listar_grupos():
-    session = SessionLocal()
-    grupos = session.query(GrupoAula).all()
-    resultado = [
-        {
-            "id": g.id,
-            "codigo_turma": g.codigo_turma,
-            "mentor_id": g.mentor_id
-        } for g in grupos
-    ]
-    session.close()
-    return jsonify(resultado)
+def listar_grupos_aula():
+    grupo_aulas = listar_grupos_aula_service()
+    return jsonify(grupo_aulas)
+
+@grupo_aula_bp.route('/<int:grupo_aula_id>', methods=['GET'])
+def buscar_grupo_aula(grupo_aula_id):
+    grupo_aula = buscar_grupo_aula_por_id_service(grupo_aula_id)
+    if grupo_aula:
+        return jsonify(grupo_aula)
+    return jsonify({"erro": "grupo_aula não encontrada"}), 404
 
 @grupo_aula_bp.route('/', methods=['POST'])
-def criar_grupo():
+def criar_grupo_aula():
     data = request.json
-    session = SessionLocal()
-    grupo = GrupoAula(
-        codigo_turma=data['codigo_turma'],
-        mentor_id=data['mentor_id']
-    )
-    session.add(grupo)
-    session.commit()
-    session.close()
-    return jsonify({
-        "id": grupo.id,
-        "codigo_turma": grupo.codigo_turma,
-        "mentor_id": grupo.mentor_id
-    }), 201
+    nova_grupo_aula = criar_grupo_aula_service(data)
+    return jsonify(nova_grupo_aula), 201
+
+@grupo_aula_bp.route('/<int:grupo_aula_id>', methods=['PUT'])
+def atualizar_grupo_aula(grupo_aula_id):
+    data = request.json
+    grupo_aula_atualizada = atualizar_grupo_aula_service(grupo_aula_id, data)
+    if grupo_aula_atualizada:
+        return jsonify(grupo_aula_atualizada)
+    return jsonify({"erro": "grupo_aula não encontrada"}), 404
+
+@grupo_aula_bp.route('/<int:grupo_aula_id>', methods=['DELETE'])
+def deletar_grupo_aula(grupo_aula_id):
+    sucesso = deletar_grupo_aula_service(grupo_aula_id)
+    if sucesso:
+        return jsonify({"mensagem": "Deletada com sucesso"})
+    return jsonify({"erro": "Não encontrada"}), 404
