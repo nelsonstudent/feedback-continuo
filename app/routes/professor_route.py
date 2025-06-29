@@ -1,4 +1,6 @@
 from flask import Blueprint, request, jsonify
+from flask_jwt_extended import jwt_required, get_jwt_identity
+
 from app.services.professor_service import (
     listar_professores_service,
     criar_professor_service,
@@ -9,25 +11,28 @@ from app.services.professor_service import (
 
 professor_bp = Blueprint('professor', __name__, url_prefix='/professores')
 
-@professor_bp.route('/', methods=['GET'])
+@professor_bp.route('/', methods=['GET'], endpoint='listar_professores')
+@jwt_required()
 def listar_professores():
     professores = listar_professores_service()
     return jsonify(professores)
 
-@professor_bp.route('/', methods=['POST'])
+@professor_bp.route('/', methods=['POST'], endpoint='criar_professor')
 def criar_professor():
     data = request.json
     novo_professor = criar_professor_service(data)
     return jsonify(novo_professor), 201
 
-@professor_bp.route('/<int:professor_id>', methods=['GET'])
+@professor_bp.route('/<int:professor_id>', methods=['GET'], endpoint='buscar_professor')
+@jwt_required()
 def buscar_professor(professor_id):
     professor = buscar_professor_por_id_service(professor_id)
     if professor:
         return jsonify(professor)
     return jsonify({"erro": "Professor não encontrado"}), 404
 
-@professor_bp.route('/<int:professor_id>', methods=['PUT'])
+@professor_bp.route('/<int:professor_id>', methods=['PUT'], endpoint='atualizar_professor')
+@jwt_required()
 def atualizar_professor(professor_id):
     data = request.json
     professor_atualizado = atualizar_professor_service(professor_id, data)
@@ -35,7 +40,8 @@ def atualizar_professor(professor_id):
         return jsonify(professor_atualizado)
     return jsonify({"erro": "Professor não encontrado"}), 404
 
-@professor_bp.route('/<int:professor_id>', methods=['DELETE'])
+@professor_bp.route('/<int:professor_id>', methods=['DELETE'], endpoint='deletar_professor')
+@jwt_required()
 def deletar_professor(professor_id):
     sucesso = deletar_professor_service(professor_id)
     if sucesso:
