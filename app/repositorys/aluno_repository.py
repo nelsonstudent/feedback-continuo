@@ -15,9 +15,18 @@ def buscar_aluno_por_id(aluno_id):
     session.close()
     return result
 
+def buscar_aluno_por_email(email):
+    session = SessionLocal()
+    aluno = session.query(Aluno).filter(Aluno.email == email).first()
+    result = aluno.to_dict() if aluno else None
+    session.close()
+    return result
+
 def criar_aluno(aluno_data):
     session = SessionLocal()
+    senha = aluno_data.pop('senha', None)
     aluno = Aluno(**aluno_data)
+    aluno.set_senha(senha) if senha else None
     session.add(aluno)
     session.commit()
     session.refresh(aluno)

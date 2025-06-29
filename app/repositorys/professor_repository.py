@@ -15,9 +15,18 @@ def buscar_professor_por_id(professor_id):
     session.close()
     return result
 
+def buscar_professor_por_email(email):
+    session = SessionLocal()
+    professor = session.query(Professor).filter(Professor.email == email).first()
+    result = professor.to_dict() if professor else None
+    session.close()
+    return result
+
 def criar_professor(professor_data):
     session = SessionLocal()
+    senha = professor_data.pop('senha', None)
     professor = Professor(**professor_data)
+    professor.set_senha(senha) if senha else None
     session.add(professor)
     session.commit()
     session.refresh(professor)
