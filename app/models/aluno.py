@@ -17,11 +17,17 @@ class Aluno(Base, BaseModel):
     materiais_visualizados = relationship("MaterialVisualizado", back_populates="aluno")
     respostas_pre_teste = relationship("RespostaPreTeste", back_populates="aluno")
     avaliacoes = relationship("Avaliacao", back_populates="aluno")
-    feedbacks_recebidos = relationship("Feedback", back_populates="aluno")
-    feedbacks_enviados = relationship("Feedback", back_populates="professor")
 
     def set_senha(self, senha):
         self.senha_hash = generate_password_hash(senha)
     
     def verificar_senha(self, senha):
         return check_password_hash(self.senha_hash, senha)
+    
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "nome": self.nome,
+            "email": self.email,
+            "turma": self.turma
+        }
