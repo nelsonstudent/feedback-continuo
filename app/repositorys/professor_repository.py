@@ -20,7 +20,7 @@ def buscar_professor_por_email(email):
     professor = session.query(Professor).filter(Professor.email == email).first()
     result = professor.to_dict() if professor else None
     session.close()
-    return result
+    return professor
 
 def criar_professor(professor_data):
     session = SessionLocal()
