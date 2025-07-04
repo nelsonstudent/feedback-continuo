@@ -1,0 +1,88 @@
+.sias-header {
+    background: #bffe71;
+    padding: 20px 0 10px 30px;
+    font-size: 32px;
+    font-family: 'Arial Black', Arial, sans-serif;
+    color: #4d7113;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+}
+.sias-logo {
+    font-weight: bold;
+    font-size: 40px;
+    color: #94d840;
+    margin-right: 10px;
+    text-shadow: 2px 2px 0 #fff;
+}
+.sias-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+.sias-menu {
+    background: #94d840;
+    padding: 10px 30px;
+    font-size: 20px;
+    color: #fff;
+    display: flex;
+    gap: 40px;
+}
+.sias-sidebar {
+    background: #f7fff7;
+    padding: 20px;
+    min-height: 600px;
+    border-radius: 6px;
+    border: 1px solid #bffe71;
+}
+.sias-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #889790 url('/static/avatar-placeholder.png') center/cover no-repeat;
+    margin: 0 auto 10px auto;
+}
+.sias-foto-link {
+    color: #004aad;
+    font-size: 12px;
+    text-align: center;
+    display: block;
+    margin-bottom: 12px;
+}
+.sias-username {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 4px;
+    text-align: center;
+}
+.sias-turma {
+    font-size: 14px;
+    color: #889790;
+    margin-bottom: 18px;
+    text-align: center;
+}
+.sias-section {
+    font-size: 13px;
+    font-weight: bold;
+    background: #fcfbfa;
+    color: #889790;
+    padding: 6px 0 4px 0;
+    margin-top: 10px;
+    margin-bottom: 2px;
+    text-align: left;
+    border-left: 4px solid #94d840;
+}
+.sias-section-desempenho {
+    margin-top: 12px;
+}
+.sias-section-geral {
+    margin-top: 24px;
+}
+.sias-main {
+    background: #fcfbfa;
+    min-height: 500px;
+    border-radius: 6px;
+    margin: 20px 0 0 0;
+    padding: 20px;
+    border: 1px solid #bffe71;
+}
