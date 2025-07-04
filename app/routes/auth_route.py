@@ -20,4 +20,8 @@ def login():
             return jsonify({"msg": "Credenciais inválidas"}), 401
 
     access_token = create_access_token(identity={"id": user.id, "tipo": tipo})
-    return jsonify(access_token=access_token), 200
+    return jsonify(
+        access_token=access_token,
+        nome=user.nome,
+        role=tipo,
+    ), 200
