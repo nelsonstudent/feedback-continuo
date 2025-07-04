@@ -21,7 +21,7 @@ def listar_professores():
 def criar_professor():
     data = request.json
     novo_professor = criar_professor_service(data)
-    return jsonify(novo_professor.to_dict()), 201
+    return jsonify(novo_professor), 201
 
 @professor_bp.route('/<int:professor_id>', methods=['GET'], endpoint='buscar_professor')
 @jwt_required()
