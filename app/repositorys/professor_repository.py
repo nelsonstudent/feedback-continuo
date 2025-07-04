@@ -22,6 +22,7 @@ def buscar_professor_por_email(email):
     session.close()
     return professor
 
+
 def criar_professor(professor_data):
     session = SessionLocal()
     senha = professor_data.pop('senha', None)

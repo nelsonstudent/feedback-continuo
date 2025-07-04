@@ -15,7 +15,7 @@ class Professor(Base, BaseModel):
     materiais = relationship("Material", back_populates="autor")
     pre_testes = relationship("PreTeste", back_populates="autor")
     grupos_mentorados = relationship("GrupoAula", back_populates="mentor")
-
+    
     def set_senha(self, senha):
         self.senha_hash = generate_password_hash(senha)
     
@@ -27,5 +27,4 @@ class Professor(Base, BaseModel):
             "id": self.id,
             "nome": self.nome,
             "email": self.email
-        }
-    
+        }    

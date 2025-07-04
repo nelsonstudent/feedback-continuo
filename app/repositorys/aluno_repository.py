@@ -22,6 +22,7 @@ def buscar_aluno_por_email(email):
     session.close()
     return aluno
 
+
 def criar_aluno(aluno_data):
     session = SessionLocal()
     senha = aluno_data.pop('senha', None)
