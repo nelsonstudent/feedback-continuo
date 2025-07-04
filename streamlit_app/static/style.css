@@ -1,0 +1,177 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    line-height: 1;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.stApp {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #a4e460, #67c23a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+    overflow: hidden;
+}
+
+.sias-card {
+    background: linear-gradient(180deg, #d3f9a7 0%, #76d34e 100%);
+    border-radius: 1rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    width: 95%;
+    max-width: 500px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;     
+}
+
+.sias-title {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #2c6e00;
+    text-shadow: 2px 2px 0 #d8ffb0, 4px 8px rgba(12, 46, 0, 0.2);
+    letter-spacing: 0.12em;
+    text-align: center;
+    font-family: 'Arial Black', sans-serif;
+    margin-bottom: 0.2rem;
+    margin-top: 0rem;
+}
+.sias-subtitle {
+    font-size: 1.4rem;
+    color: #e5ff7b;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 0.1em;
+    font-family: 'Arial', sans-serif;
+    text-shadow: 1px 1px 4px rgba(12, 46, 0, 0.3);
+    margin-bottom: 1rem;
+}
+.separator {
+    height: 3px;
+    width: 75%;
+    margin: 0.8rem auto 2rem auto;
+    background: linear-gradient(90deg, #f0ffb5 30%, #a4e460 100%);
+    border-radius: 2px;
+    opacity: 0.9;
+}
+
+.login-label {
+    font-weight: bold;
+    color: #2c6e00;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    text-align: left;
+    width: 100%;
+    padding-left: 0.2rem;
+}
+
+.stTextInput > label {
+    font-weight: 500;
+    color: #2c6e00;
+    margin-bottom: 0.4rem;
+}
+
+.stTextInput input {
+    background: #ffffff;
+    border: 1px solid #c2e0a2;
+    border-radius: 10px;
+    padding: 0.7rem 1rem;
+    margin-bottom: 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c6e00;
+    height: 3rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    max-width: 400px;
+    width: 100% !important;
+    box-sizing: border-box;
+}
+
+.stTextInput input::placeholder {
+    color: #b1b893;
+    font-weight: 400;
+}
+
+.login-links {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 1.5rem;
+    margin-top: -0.5rem; 
+    padding-left: 0.2rem;
+}
+
+.login-links span {
+    color: #555;
+    font-size: 1rem;
+}
+
+.login-links .register-link {
+    color: #1e8905;
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 1rem;
+    transition: color 0.2s ease-in-out;
+}
+.login-links .register-link:hover {
+    color: #2c6e00;
+    text-decoration: underline;
+}
+
+.login-links .forgot-link {
+    display: inline-block;
+    margin-top: 0.4rem;
+    color: #79a149;
+    font-size: 0.98rem;
+    text-decoration: underline dotted;
+    font-style: italic;
+    transition: color 0.2s ease-in-out;
+}
+.login-links .forgot-link:hover {
+    color: #4f6a2b;
+    text-decoration: underline;
+}
+        
+.stButton > button {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 25px;
+    background: linear-gradient(90deg, #94d840 30%, #bffe71 100%);
+    font-weight: bold;
+    font-size: 1.3rem;
+    padding: 0.8rem 1rem;
+    color: #2c6e00;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    margin-top: 1rem;
+}
+.stButton > button:hover {
+    filter: brightness(1.15);
+    box-shadow: 0 6px 20px rgba(124, 189, 64, 0.6);
+    transform: translateY(-2px);
+}

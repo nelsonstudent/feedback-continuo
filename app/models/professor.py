@@ -15,12 +15,16 @@ class Professor(Base, BaseModel):
     materiais = relationship("Material", back_populates="autor")
     pre_testes = relationship("PreTeste", back_populates="autor")
     grupos_mentorados = relationship("GrupoAula", back_populates="mentor")
-    feedbacks_recebidos = relationship("Feedback", back_populates="aluno")
-    feedbacks_enviados = relationship("Feedback", back_populates="professor")
-
+    
     def set_senha(self, senha):
         self.senha_hash = generate_password_hash(senha)
     
     def verificar_senha(self, senha):
         return check_password_hash(self.senha_hash, senha)
     
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "nome": self.nome,
+            "email": self.email
+        }    

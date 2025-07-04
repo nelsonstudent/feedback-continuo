@@ -20,7 +20,8 @@ def buscar_aluno_por_email(email):
     aluno = session.query(Aluno).filter(Aluno.email == email).first()
     result = aluno.to_dict() if aluno else None
     session.close()
-    return result
+    return aluno
+
 
 def criar_aluno(aluno_data):
     session = SessionLocal()

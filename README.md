@@ -78,12 +78,13 @@ feedback-continuo/
 │   ├── services/           # Lógica de negócio
 │   ├── api/                # Rotas Flask (Controllers)
 │   ├── templates/          # (Opcional) HTML para admin ou forms
-│   └── static/             # Arquivos estáticos (uploads, css, imgs)
+│   
 ├── streamlit_app/
 │   ├── main.py             # Dashboard principal (Streamlit)
 │   └── pages/              # Páginas adicionais para alunos/professores
 ├── tests/                  # Testes automatizados
 ├── docs/                   # Documentação e diagramas
+└── static/                 # Arquivos estáticos (uploads, css, imgs)
 ├── requirements.txt        # Dependências Python
 ├── README.md
 └── LICENSE

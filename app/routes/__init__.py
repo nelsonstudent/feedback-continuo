@@ -9,6 +9,7 @@ from .avaliacao_route import avaliacao_bp
 from .relatorio_route import relatorio_bp
 from .resposta_pre_teste_route import resposta_pre_teste_bp
 from .material_visualizado_route import material_visualizado_bp
+from .auth_route import auth_bp
 
 routes_bp = Blueprint('routes', __name__)
 
@@ -22,3 +23,4 @@ routes_bp.register_blueprint(avaliacao_bp)
 routes_bp.register_blueprint(relatorio_bp)
 routes_bp.register_blueprint(resposta_pre_teste_bp)
 routes_bp.register_blueprint(material_visualizado_bp)
+routes_bp.register_blueprint(auth_bp)
