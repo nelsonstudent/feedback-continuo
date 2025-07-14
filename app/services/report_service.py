@@ -1,11 +1,11 @@
-from app.repositorys.report_repo import (
+from ..repositories.report_repo import (
     coletar_dados,
     gerar_relatorio as gerar_relatorio_excel,
     gerar_pdf,
     salvar_arquivo,
     registrar_relatorio
 )
-from app.repositorys.authorization_repo import verificar_liberacao
+from ..repositories.authorization_repo import verificar_liberacao
 
 def gerar_relatorio(aula_id):
     if not verificar_liberacao(aula_id):
