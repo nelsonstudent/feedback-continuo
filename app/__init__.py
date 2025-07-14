@@ -16,7 +16,7 @@ def create_app():
 
     # Inicializa extensão
     db.init_app(app)
-
+    
     # Registra blueprints (APIs)
     from app.api.report_api import bp as report_bp
     app.register_blueprint(report_bp)
