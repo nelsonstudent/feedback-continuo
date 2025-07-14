@@ -44,3 +44,22 @@ Este documento descreve os requisitos funcionais e não funcionais do sistema de
 **Versão**: 1.0  
 **Data**: Junho/2025  
 **Autor**: Documento gerado automaticamente com base nas User Stories do projeto.
+
+
+## Requisitos Adicionais
+
+**RF14**: Cadastro de Usuários  
+O sistema deve permitir o cadastro de professores e alunos, com validação de campos obrigatórios e mensagens de erro claras.
+
+**RF15**: Login de Usuários  
+O sistema deve permitir login de professores e alunos, com diferenciação de permissões e tratamento de erros apropriado.
+
+**RNF05 (Ajustado)**: Autenticação  
+O sistema deve garantir autenticação segura, com formulários protegidos e validação das credenciais, diferenciando níveis de acesso.
+
+### Critérios de Aceite
+- Validação de todos os campos obrigatórios.
+- Mensagens de erro claras.
+- Prevenção de cadastro duplicado por e-mail.
+- Redirecionamento conforme perfil após login.
+- Segurança das credenciais.
