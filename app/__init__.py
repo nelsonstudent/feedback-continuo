@@ -1,8 +1,9 @@
 # app/__init__.py
 
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+from flask_SQLAlchemy import SQLAlchemy
 from app.config import SQLALCHEMY_DATABASE_URI, SQLALCHEMY_TRACK_MODIFICATIONS
+from app.utils.scheduler import scheduler
 
 # ======== AQUI DEFINIMOS O DB ===================
 db = SQLAlchemy()

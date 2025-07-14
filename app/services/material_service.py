@@ -1,4 +1,4 @@
-from app.repositorys.material_repository import (
+from app.repositories.material_repository import (
     listar_materiais,
     buscar_material_por_id,
     criar_material,

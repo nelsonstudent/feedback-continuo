@@ -1,5 +1,5 @@
 from apscheduler.schedulers.background import BackgroundScheduler
-from app.repositorys.calendar_repository import listar_eventos_hoje
+from app.repositories.calendar_repository import listar_eventos_hoje
 from app.services.report_service import gerar_relatorio
 from datetime import datetime, timedelta
 

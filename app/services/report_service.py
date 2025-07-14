@@ -1,4 +1,4 @@
-from ..repositories.report_repo import (
+from app.repositories.report_repo import (
     coletar_dados,
     gerar_relatorio as gerar_relatorio_excel,
     gerar_pdf,

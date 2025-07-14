@@ -1,4 +1,4 @@
-from app.repositorys.grupo_aula_repository import (
+from app.repositories.grupo_aula_repository import (
     listar_grupos_aula,
     buscar_grupo_aula_por_id,
     criar_grupo_aula,

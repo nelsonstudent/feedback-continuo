@@ -1,4 +1,4 @@
-from app.repositorys.aluno_repository import (
+from app.repositories.aluno_repository import (
     listar_alunos,
     buscar_aluno_por_id,
     criar_aluno,

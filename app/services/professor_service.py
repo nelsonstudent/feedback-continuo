@@ -1,4 +1,4 @@
-from app.repositorys.professor_repository import (
+from app.repositories.professor_repository import (
     listar_professores,
     buscar_professor_por_id,
     criar_professor,

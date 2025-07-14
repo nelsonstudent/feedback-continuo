@@ -1,4 +1,4 @@
-from app.repositorys.relatorio_repository import (
+from app.repositories.relatorio_repository import (
     listar_relatorios,
     buscar_relatorio_por_id,
     criar_relatorio,

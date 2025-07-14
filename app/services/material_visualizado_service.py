@@ -1,4 +1,4 @@
-from app.repositorys.material_visualizado_repository import (
+from app.repositories.material_visualizado_repository import (
     listar_material_visualizado,
     buscar_material_visualizado_por_id,
     criar_material_visualizado,
