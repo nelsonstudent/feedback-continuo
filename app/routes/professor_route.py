@@ -20,8 +20,12 @@ def listar_professores():
 @professor_bp.route('/', methods=['POST'], endpoint='criar_professor')
 def criar_professor():
     data = request.json
-    novo_professor = criar_professor_service(data)
-    return jsonify(novo_professor), 201
+    resultado = criar_professor_service(data)
+    if isinstance(resultado, dict) and "erro" in resultado:
+        erro = resultado["erro"]
+        status = 409 if erro == "Email já cadastrado." else 400
+        return jsonify(resultado), status
+    return jsonify(resultado), 201
 
 @professor_bp.route('/<int:professor_id>', methods=['GET'], endpoint='buscar_professor')
 @jwt_required()
