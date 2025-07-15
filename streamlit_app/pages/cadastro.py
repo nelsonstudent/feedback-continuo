@@ -39,7 +39,8 @@ if st.button("Cadastrar", use_container_width=True):
         payload = {
             "nome": nome,
             "email": email,
-            "senha": senha
+            "senha": senha,
+            "confirmacao_senha": confirma_senha,
         }
         if tipo_usuario == "Aluno":
             payload["turma"] = turma
