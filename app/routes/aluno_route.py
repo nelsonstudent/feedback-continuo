@@ -28,8 +28,15 @@ def buscar_aluno(aluno_id):
 @aluno_bp.route('/', methods=['POST'], endpoint='criar_aluno')
 def criar_aluno():
     data = request.json
-    nova_aluno = criar_aluno_service(data)
-    return jsonify(nova_aluno), 201
+    if not data or 'nome' not in data or 'email' not in data:
+        return jsonify({"erro": "Campos obrigatórios: nome e email"}), 400
+    
+    resultado = criar_aluno_service(data)
+    if isinstance(resultado, dict) and "erro" in resultado:
+        if resultado["erro"] == "Email já cadastrado.":
+            return jsonify(resultado), 409
+        return jsonify(resultado), 400
+    return jsonify(resultado), 201
 
 @aluno_bp.route('/<int:aluno_id>', methods=['PUT'], endpoint='atualizar_aluno')
 @jwt_required()
