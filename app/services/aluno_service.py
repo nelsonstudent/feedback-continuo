@@ -5,6 +5,7 @@ from app.repositorys.aluno_repository import (
     atualizar_aluno,
     deletar_aluno
 )
+from app.models.aluno import Aluno
 
 def listar_alunos_service():
     return listar_alunos()
@@ -15,7 +16,39 @@ def buscar_aluno_por_id_service(aluno_id):
         return None
     return aluno
 
+def validar_aluno(aluno_data):
+    if not aluno_data.get('nome'):
+        return "O campo 'nome' é obrigatório."
+    if not aluno_data.get('email'):
+        return "O campo 'email' é obrigatório."
+    if not aluno_data.get('senha'):
+        return "O campo 'senha' é obrigatório."
+    if not aluno_data.get('confirmacao_senha'):
+        return "O campo 'confirmação de senha' é obrigatório."
+    if aluno_data.get('senha') != aluno_data.get('confirmacao_senha'):
+        return "A senha e a confirmação de senha devem ser iguais."
+    if not aluno_data.get('turma'):
+        return "O campo 'turma' é obrigatório."
+    return None
+
+def email_duplicado(email):
+    alunos = listar_alunos()
+    for aluno in alunos:
+        if aluno['email'] == email:
+            return True
+    return False
+
 def criar_aluno_service(aluno_data):
+    erro_validacao = validar_aluno(aluno_data)
+    if erro_validacao:
+        return {"erro": erro_validacao}
+
+    if email_duplicado(aluno_data['email']):
+        return {"erro": "Email já cadastrado."}
+
+    aluno_data = aluno_data.copy()
+    aluno_data.pop("confirmacao_senha", None)
+
     return criar_aluno(aluno_data)
 
 def atualizar_aluno_service(aluno_id, aluno_data):
