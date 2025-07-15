@@ -45,9 +45,15 @@ with st.container():
                 if resp.status_code == 200:
                     user_data = resp.json()
                     st.session_state["logged_in"] = True
-                    st.session_state["user_role"] = user_data.get("role", "aluno")
+                    user_role = user_data.get("role", "aluno").lower()
+                    st.session_state["user_role"] = user_role
                     st.session_state["user_name"] = user_data.get("nome", email)
-                    st.switch_page("pages/dashboard.py")
+                    st.session_state["user_id"] = user_data.get("id")
+
+                    if user_role == "professor":
+                        st.switch_page("pages/dashboard_professor.py")
+                    else:
+                        st.switch_page("pages/dashboard_aluno.py")
                 else:
                     st.error("Usuário ou senha inválidos.")
             except Exception as e:
