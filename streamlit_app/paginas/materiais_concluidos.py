@@ -2,6 +2,8 @@ from urllib import response
 import streamlit as st
 import requests
 
+from app.models import materiais_concluidos
+
 API_URL = "https://api.example.com/materiais_concluidos/completos"
 
 st.title("Materiais Disponíveis")
