@@ -1,3 +1,4 @@
+from urllib import response
 import streamlit as st
 import requests
 
@@ -19,10 +20,13 @@ for m in materiais:
     if not m.get("concluido", False):
         if st.button(f"Concluir {m['titulo']}", key=f"complete-{m['id']}"):
             post = requests.post(f"{API_URL}/{m['id']}/materiais_concluidos")
-            if post.ok:
+        if post.status_code == 200:
+                st.success("✅ Material concluído!")
+                st.experimental_rerun()
+        if post.ok:
                 st.success("✅ Marcado como concluído!")
                 st.experimental_rerun()
-            else:
+        else:
                 st.error("❌ Falha ao concluir")
     else:
         st.info("✅ Já concluído")
