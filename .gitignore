@@ -1,0 +1,11 @@
+.venv/
+sias.db
+__pycache__/
+*.pyc
+*.py[cod]
+.env
+venv/
+*.sqlite3
+instance/
+.DS_Store
+
