@@ -3,3 +3,5 @@ sias.db
 __pycache__/
 *.pyc
 .env
+venv/
+.idea
