@@ -1,23 +1,53 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# node_modules: dependências instaladas pelo npm/yarn/pnpm
+node_modules/
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
+# Build output
+build/
+dist/
 
-# testing
-/coverage
-
-# production
-/build
-
-# misc
-.DS_Store
+# Arquivos de ambiente
+.env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
+# Log files
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# VSCode settings (opcional)
+.vscode/
+
+# Coverage reports
+coverage/
+
+# Relatórios de testes
+*.lcov
+
+# Cache do editor
+*.swp
+*.swo
+
+# Outros caches
+.cache/
+.eslintcache
+
+# Storybook build
+storybook-static/
+
+# Relatórios do Cypress
+cypress/screenshots/
+cypress/videos/
+
+.venv/
+sias.db
+__pycache__/
+*.pyc
+.env
