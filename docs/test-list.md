@@ -90,3 +90,93 @@ Esses testes garantem que os modelos da aplicação estão corretamente configur
 
 ---
 ## Testes de rotas com do BackEnd com Flask
+
+### `test_listar_alunos`
+**Objetivo:** Testa a listagem de alunos cadastrados via rota GET /alunos/.
+
+**Critério de aceite:** Deve retornar status 200 e uma lista.
+
+### `test_buscar_aluno`
+**Objetivo:** Testa a recuperação de um aluno por ID via rota GET /alunos/<id>.
+
+**Critério de aceite:** Deve retornar status 200 e os dados corretos do aluno.
+
+### `test_criar_aluno`
+**Objetivo:** Testa a criação de um novo aluno via POST /alunos/.
+
+**Critério de aceite:** Deve retornar status 201.
+
+### `test_criar_aluno_faltando_campos`
+**Objetivo:** Testa o erro ao criar aluno sem campos obrigatórios.
+
+**Critério de aceite:** Deve retornar status 400.
+
+### `test_atualizar_aluno`
+**Objetivo:** Testa a atualização do nome de um aluno via PUT /alunos/<id>.
+
+**Critério de aceite:** Deve retornar status 200 e o novo nome.
+
+### `test_deletar_aluno`
+**Objetivo:** Testa a exclusão de um aluno via DELETE /alunos/<id>.
+
+**Critério de aceite:** Deve retornar status 200 com mensagem de sucesso.
+
+### `test_listar_aulas`
+**Objetivo:** Testa a listagem de aulas via GET /aulas/.
+
+**Critério de aceite:** Deve retornar status 200 e uma lista.
+
+### `test_buscar_aula`
+**Objetivo:** Testa a busca de uma aula por ID via GET /aulas/<id>.
+
+**Critério de aceite:** Deve retornar status 200 e o tema correspondente.
+
+### `test_criar_aula`
+**Objetivo:** Testa a criação de uma aula via POST /aulas/.
+
+**Critério de aceite:** Deve retornar status 201.
+
+### `test_atualizar_aula`
+**Objetivo:** Testa a atualização do tema de uma aula via PUT /aulas/<id>.
+
+**Critério de aceite:** Deve retornar status 200 e novo tema.
+
+### `test_deletar_aula`
+**Objetivo:** Testa a exclusão de uma aula via DELETE /aulas/<id>.
+
+**Critério de aceite:** Deve retornar status 200 com mensagem de sucesso.
+
+### `test_login_aluno_com_sucesso`
+**Objetivo:** Testa o login com credenciais corretas.
+
+**Critério de aceite:** Deve retornar token de acesso e status 200.
+
+### `test_login_credenciais_invalidas`
+**Objetivo:** Testa tentativa de login com dados incorretos.
+
+**Critério de aceite:** Deve retornar status 401 e mensagem de erro.
+
+### `test_listar_avaliacoes`
+**Objetivo:** Testa listagem de avaliações via GET /avaliacoes/.
+
+**Critério de aceite:** Deve retornar lista vazia ou avaliações.
+
+### `test_buscar_avaliacao`
+**Objetivo:** Testa busca de avaliação por ID.
+
+**Critério de aceite:** Deve retornar os dados da avaliação.
+
+### `test_criar_avaliacao`
+**Objetivo:** Testa criação de avaliação via POST /avaliacoes/.
+
+**Critério de aceite:** Deve retornar status 201.
+
+### `test_atualizar_avaliacao`
+**Objetivo:** Testa atualização de avaliação via PUT /avaliacoes/<id>.
+
+**Critério de aceite:** Deve retornar nota atualizada.
+
+### `test_deletar_avaliacao`
+**Objetivo:** Testa exclusão de avaliação via DELETE /avaliacoes/<id>.
+
+**Critério de aceite:** Deve retornar status 200 e mensagem.

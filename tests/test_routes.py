@@ -321,97 +321,97 @@ class AlunoRoutesTestCase(unittest.TestCase):
     @patch("app.routes.professor_route.listar_professores_service", return_value=[{"id": 1, "nome": "Prof. João"}])
     @patch("flask_jwt_extended.view_decorators.verify_jwt_in_request", lambda *args, **kwargs: None)
     def test_listar_professores(self, mock_service):
-        res = self.app.get("/professores/")
+        res = self.client.get("/professores/")
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res.get_json(), [{"id": 1, "nome": "Prof. João"}])
 
     @patch("app.routes.professor_route.criar_professor_service", return_value={"id": 1, "nome": "Prof. Novo"})
     def test_criar_professor(self, mock_service):
-        res = self.app.post("/professores/", json={"nome": "Prof. Novo"})
+        res = self.client.post("/professores/", json={"nome": "Prof. Novo"})
         self.assertEqual(res.status_code, 201)
         self.assertEqual(res.get_json(), {"id": 1, "nome": "Prof. Novo"})
 
     @patch("app.routes.professor_route.buscar_professor_por_id_service", return_value={"id": 1, "nome": "Prof. João"})
     @patch("flask_jwt_extended.view_decorators.verify_jwt_in_request", lambda *args, **kwargs: None)
     def test_buscar_professor(self, mock_service):
-        res = self.app.get("/professores/1")
+        res = self.client.get("/professores/1")
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res.get_json(), {"id": 1, "nome": "Prof. João"})
 
     @patch("app.routes.professor_route.atualizar_professor_service", return_value={"id": 1, "nome": "Prof. Atualizado"})
     @patch("flask_jwt_extended.view_decorators.verify_jwt_in_request", lambda *args, **kwargs: None)
     def test_atualizar_professor(self, mock_service):
-        res = self.app.put("/professores/1", json={"nome": "Prof. Atualizado"})
+        res = self.client.put("/professores/1", json={"nome": "Prof. Atualizado"})
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res.get_json(), {"id": 1, "nome": "Prof. Atualizado"})
 
     @patch("app.routes.professor_route.deletar_professor_service", return_value=True)
     @patch("flask_jwt_extended.view_decorators.verify_jwt_in_request", lambda *args, **kwargs: None)
     def test_deletar_professor(self, mock_service):
-        res = self.app.delete("/professores/1")
+        res = self.client.delete("/professores/1")
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res.get_json(), {"mensagem": "Professor deletado com sucesso"})
 
     @patch("app.routes.relatorio_route.listar_relatorios_service", return_value=[{"id": 1, "titulo": "Relatório A"}])
     def test_listar_relatorios(self, mock_service):
-        res = self.app.get("/relatorios/")
+        res = self.client.get("/relatorios/")
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res.get_json(), [{"id": 1, "titulo": "Relatório A"}])
 
     @patch("app.routes.relatorio_route.buscar_relatorio_por_id_service",
            return_value={"id": 1, "titulo": "Relatório A"})
     def test_buscar_relatorio(self, mock_service):
-        res = self.app.get("/relatorios/1")
+        res = self.client.get("/relatorios/1")
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res.get_json(), {"id": 1, "titulo": "Relatório A"})
 
     @patch("app.routes.relatorio_route.criar_relatorio_service", return_value={"id": 1, "titulo": "Relatório Criado"})
     def test_criar_relatorio(self, mock_service):
-        res = self.app.post("/relatorios/", json={"titulo": "Relatório Criado"})
+        res = self.client.post("/relatorios/", json={"titulo": "Relatório Criado"})
         self.assertEqual(res.status_code, 201)
         self.assertEqual(res.get_json(), {"id": 1, "titulo": "Relatório Criado"})
 
     @patch("app.routes.relatorio_route.atualizar_relatorio_service", return_value={"id": 1, "titulo": "Atualizado"})
     def test_atualizar_relatorio(self, mock_service):
-        res = self.app.put("/relatorios/1", json={"titulo": "Atualizado"})
+        res = self.client.put("/relatorios/1", json={"titulo": "Atualizado"})
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res.get_json(), {"id": 1, "titulo": "Atualizado"})
 
     @patch("app.routes.relatorio_route.deletar_relatorio_service", return_value=True)
     def test_deletar_relatorio(self, mock_service):
-        res = self.app.delete("/relatorios/1")
+        res = self.client.delete("/relatorios/1")
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res.get_json(), {"mensagem": "Entidade deletada com sucesso"})
 
     @patch("app.routes.resposta_pre_teste_route.listar_respostas_pre_teste", return_value=[{"id": 1}])
     def test_listar_respostas_pre_teste(self, mock_service):
-        res = self.app.get("/respostas_pre_teste/")
+        res = self.client.get("/respostas_pre_teste/")
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res.get_json(), [{"id": 1}])
 
     @patch("app.routes.resposta_pre_teste_route.buscar_resposta_pre_teste_por_id", return_value={"id": 1})
     def test_buscar_resposta_pre_teste(self, mock_service):
-        res = self.app.get("/respostas_pre_teste/1")
+        res = self.client.get("/respostas_pre_teste/1")
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res.get_json(), {"id": 1})
 
     @patch("app.routes.resposta_pre_teste_route.criar_resposta_pre_teste",
            return_value={"id": 1, "resposta": "resposta"})
     def test_criar_resposta_pre_teste(self, mock_service):
-        res = self.app.post("/respostas_pre_teste/", json={"resposta": "resposta"})
+        res = self.client.post("/respostas_pre_teste/", json={"resposta": "resposta"})
         self.assertEqual(res.status_code, 201)
         self.assertEqual(res.get_json(), {"id": 1, "resposta": "resposta"})
 
     @patch("app.routes.resposta_pre_teste_route.atualizar_resposta_pre_teste_service",
            return_value={"id": 1, "resposta": "nova"})
     def test_atualizar_resposta_pre_teste(self, mock_service):
-        res = self.app.put("/respostas_pre_teste/1", json={"resposta": "nova"})
+        res = self.client.put("/respostas_pre_teste/1", json={"resposta": "nova"})
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res.get_json(), {"id": 1, "resposta": "nova"})
 
     @patch("app.routes.resposta_pre_teste_route.deletar_resposta_pre_teste_service", return_value=True)
     def test_deletar_resposta_pre_teste(self, mock_service):
-        res = self.app.delete("/respostas_pre_teste/1")
+        res = self.client.delete("/respostas_pre_teste/1")
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res.get_json(), {"mensagem": "Deletado com sucesso"})
 
