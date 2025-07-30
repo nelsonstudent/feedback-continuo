@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from app.services.material_visualizado_service import (
+from services.material_visualizado_service import (
     listar_material_visualizado_service,
     buscar_material_visualizado_por_id_service,
     criar_material_visualizado_service,

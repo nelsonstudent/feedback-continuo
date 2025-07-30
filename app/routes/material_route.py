@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from app.services.material_service import (
+from services.material_service import (
     listar_materiais_service,
     buscar_material_por_id_service,
     criar_material_service,

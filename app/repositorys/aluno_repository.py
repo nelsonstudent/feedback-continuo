@@ -1,5 +1,5 @@
-from app.models.aluno import Aluno
-from app.database.sias_db import SessionLocal
+from models.aluno import Aluno
+from database.sias_db import SessionLocal
 
 def listar_alunos():
     session = SessionLocal()

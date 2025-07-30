@@ -1,5 +1,5 @@
-from app.models.material import Material
-from app.database.sias_db import SessionLocal
+from models.material import Material
+from database.sias_db import SessionLocal
 
 def listar_materiais():
     session = SessionLocal()

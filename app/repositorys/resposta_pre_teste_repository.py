@@ -1,5 +1,5 @@
-from app.models.resposta_pre_teste import RespostaPreTeste
-from app.database.sias_db import SessionLocal
+from models.resposta_pre_teste import RespostaPreTeste
+from database.sias_db import SessionLocal
 
 def listar_respostas_pre_teste():
     session = SessionLocal()

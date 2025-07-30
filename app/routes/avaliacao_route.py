@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from app.services.avaliacao_service import (
+from services.avaliacao_service import (
     listar_avaliacoes_service,
     buscar_avaliacao_por_id_service,
     criar_avaliacao_service,

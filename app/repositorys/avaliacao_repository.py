@@ -1,5 +1,5 @@
-from app.models.avaliacao import Avaliacao
-from app.database.sias_db import SessionLocal
+from models.avaliacao import Avaliacao
+from database.sias_db import SessionLocal
 
 def listar_avaliacoes():
     session = SessionLocal()

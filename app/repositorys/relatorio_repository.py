@@ -1,5 +1,5 @@
-from app.models.relatorio import Relatorio
-from app.database.sias_db import SessionLocal
+from models.relatorio import Relatorio
+from database.sias_db import SessionLocal
 
 def listar_relatorios():
     session = SessionLocal()

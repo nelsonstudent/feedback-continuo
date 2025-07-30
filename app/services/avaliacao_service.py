@@ -1,4 +1,4 @@
-from app.repositorys.avaliacao_repository import (
+from repositorys.avaliacao_repository import (
     listar_avaliacoes,
     buscar_avaliacao_por_id,
     criar_avaliacao,

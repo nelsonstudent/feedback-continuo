@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
-from app.services.aluno_service import (
+from services.aluno_service import (
     listar_alunos_service,
     buscar_aluno_por_id_service,
     criar_aluno_service,

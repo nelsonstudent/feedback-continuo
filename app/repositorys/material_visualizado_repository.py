@@ -1,5 +1,5 @@
-from app.models.material_visualizado import MaterialVisualizado
-from app.database.sias_db import SessionLocal
+from models.material_visualizado import MaterialVisualizado
+from database.sias_db import SessionLocal
 
 def listar_material_visualizado():
     session = SessionLocal()

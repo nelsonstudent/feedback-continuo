@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from app.services.pre_teste_service import (
+from services.pre_teste_service import (
     listar_pre_testes_service,
     buscar_pre_teste_por_id_service,
     criar_pre_teste_service,
