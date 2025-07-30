@@ -1,5 +1,5 @@
-from app.models.aula import Aula
-from app.database.sias_db import SessionLocal
+from models.aula import Aula
+from database.sias_db import SessionLocal
 
 def listar_aulas():
     session = SessionLocal()

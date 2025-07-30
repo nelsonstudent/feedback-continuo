@@ -1,4 +1,4 @@
-from app.repositorys.professor_repository import (
+from repositorys.professor_repository import (
     listar_professores,
     buscar_professor_por_id,
     buscar_professor_por_email,
@@ -6,7 +6,6 @@ from app.repositorys.professor_repository import (
     atualizar_professor,
     deletar_professor
 )
-
 
 def listar_professores_service():
     return listar_professores()
@@ -18,19 +17,18 @@ def buscar_professor_por_id_service(professor_id):
     return professor
 
 def criar_professor_service(professor_data):
-    obrigatorios = ["nome", "email", "senha", "confirmacao_senha"]
+    obrigatorios = ["nome", "email", "senha"]
     for campo in obrigatorios:
         if campo not in professor_data or not professor_data[campo]:
             return {"erro": f"O campo '{campo}' é obrigatório."}
-
-    if professor_data["senha"] != professor_data["confirmacao_senha"]:
-        return {"erro": "As senhas não coincidem."}
 
     if buscar_professor_por_email(professor_data["email"]):
         return {"erro": "Email já cadastrado."}
 
     data = dict(professor_data)
-    data.pop("confirmacao_senha")
+    if "confirmacao_senha" in data:
+        data.pop("confirmacao_senha")
+        
     return criar_professor(data)
 
 def atualizar_professor_service(professor_id, professor_data):

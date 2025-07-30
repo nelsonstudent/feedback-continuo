@@ -1,4 +1,4 @@
-from app.repositorys.resposta_pre_teste_repository import (
+from repositorys.resposta_pre_teste_repository import (
     listar_respostas_pre_teste,
     buscar_resposta_pre_teste_por_id,
     criar_resposta_pre_teste,

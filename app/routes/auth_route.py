@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import create_access_token
-from app.repositorys.aluno_repository import buscar_aluno_por_email
-from app.repositorys.professor_repository import buscar_professor_por_email
+from repositorys.aluno_repository import buscar_aluno_por_email
+from repositorys.professor_repository import buscar_professor_por_email
 
 auth_bp = Blueprint('auth', __name__)
 
@@ -24,4 +24,6 @@ def login():
         access_token=access_token,
         nome=user.nome,
         role=tipo,
+        id=user.id
+
     ), 200

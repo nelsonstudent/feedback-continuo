@@ -1,4 +1,4 @@
-from app.repositorys.aula_repository import (
+from repositorys.aula_repository import (
     listar_aulas,
     buscar_aula_por_id,
     criar_aula,

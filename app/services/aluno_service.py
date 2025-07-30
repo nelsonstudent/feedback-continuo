@@ -1,11 +1,12 @@
-from app.repositorys.aluno_repository import (
+from models.aluno import Aluno
+
+from repositorys.aluno_repository import (
     listar_alunos,
     buscar_aluno_por_id,
     criar_aluno,
     atualizar_aluno,
     deletar_aluno
 )
-from app.models.aluno import Aluno
 
 def listar_alunos_service():
     return listar_alunos()
@@ -23,10 +24,6 @@ def validar_aluno(aluno_data):
         return "O campo 'email' é obrigatório."
     if not aluno_data.get('senha'):
         return "O campo 'senha' é obrigatório."
-    if not aluno_data.get('confirmacao_senha'):
-        return "O campo 'confirmação de senha' é obrigatório."
-    if aluno_data.get('senha') != aluno_data.get('confirmacao_senha'):
-        return "A senha e a confirmação de senha devem ser iguais."
     if not aluno_data.get('turma'):
         return "O campo 'turma' é obrigatório."
     return None

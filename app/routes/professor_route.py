@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
-from app.services.professor_service import (
+from services.professor_service import (
     listar_professores_service,
     criar_professor_service,
     buscar_professor_por_id_service,
@@ -18,6 +18,7 @@ def listar_professores():
     return jsonify(professores)
 
 @professor_bp.route('/', methods=['POST'], endpoint='criar_professor')
+@professor_bp.route('', methods=['POST'], endpoint='criar_professor')
 def criar_professor():
     data = request.json
     resultado = criar_professor_service(data)

@@ -1,5 +1,5 @@
-from app.models.grupo_aula import GrupoAula
-from app.database.sias_db import SessionLocal
+from models.grupo_aula import GrupoAula
+from database.sias_db import SessionLocal
 
 def listar_grupos_aula():
     session = SessionLocal()

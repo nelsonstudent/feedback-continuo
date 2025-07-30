@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from app.services.grupo_aula_service import (
+from services.grupo_aula_service import (
     listar_grupos_aula_service,
     buscar_grupo_aula_por_id_service,
     criar_grupo_aula_service,

@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from app.services.relatorio_service import (
+from services.relatorio_service import (
     listar_relatorios_service,
     buscar_relatorio_por_id_service,
     criar_relatorio_service,

@@ -1,5 +1,5 @@
-from app.models.professor import Professor
-from app.database.sias_db import SessionLocal
+from models.professor import Professor
+from database.sias_db import SessionLocal
 
 def listar_professores():
     session = SessionLocal()
