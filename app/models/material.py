@@ -1,8 +1,8 @@
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
-from app.database import Base
-from app.models.base import BaseModel
+from database import Base
+from models.base import BaseModel
 from sqlalchemy.orm import relationship
-from app.models.aula_material import aula_material
+from models.aula_material import aula_material
 
 class Material(Base, BaseModel):
     __tablename__ = "materiais"

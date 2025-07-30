@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Float, ForeignKey
-from app.database import Base
-from app.models.base import BaseModel
+from database import Base
+from models.base import BaseModel
 from sqlalchemy.orm import relationship
 
 class Avaliacao(Base, BaseModel):

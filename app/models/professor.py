@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String
-from app.database.sias_db import Base
-from app.models.base import BaseModel
+from database import Base
+from models.base import BaseModel
 from sqlalchemy.orm import relationship
 from werkzeug.security import generate_password_hash, check_password_hash
 
