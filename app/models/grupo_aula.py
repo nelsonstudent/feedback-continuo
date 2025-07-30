@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, Table
-from app.database import Base
-from app.models.base import BaseModel
+from database import Base
+from models.base import BaseModel
 from sqlalchemy.orm import relationship
 
 aluno_grupo = Table(

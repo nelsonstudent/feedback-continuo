@@ -1,5 +1,5 @@
 from sqlalchemy import Table, Column, Integer, ForeignKey
-from app.database import Base
+from database import Base
 
 aula_material = Table(
     "aula_material", Base.metadata,
